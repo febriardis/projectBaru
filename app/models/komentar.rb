@@ -1,0 +1,2 @@
+class Komentar < ApplicationRecord
+end

@@ -1,0 +1,63 @@
+<% if user = current_user %>
+	<div class="backcontent">
+		<div class="center">
+			<div class="content"><hr>
+				<div class="kiriman">
+					<!--form-kiriman user-->
+					<%= form_for(@kiriman, url: {action: 'postKiriman'}, method: 'post') do |f| %>
+						<%= f.hidden_field :idUser, :value => user.id%>
+						<%= f.text_area :kirimanUser, class:'form-kiriman', placeholder: 'kirimkan sesuatu ....'%>
+						<%= f.submit 'Post', class:'form-submit-kiriman' %>
+					<% end %>
+					<div class="clear"></div>
+					<!--end form-kiriman user-->
+				</div>
+				<hr>
+
+				<!--kiriman user-->
+				<% News.all.where(idUser: user.id).each do |p| %>
+					<div class="news">
+						<div class="header-kiriman">
+							<div style="color:#fff; float: left;">
+								<%= User.find_by(id: p.idUser).nama %> <!--Nama Pengirim-->
+							</div>
+							
+							<div class="kir">
+								<% x = p.id %>
+								<%= link_to "x", hapusKiriman_path(x), method: :delete, class:'link' %>
+							</div>
+						</div>
+
+						<div class="news-kiriman"  style="background: white">
+							<p><%= p.kirimanUser %></p>
+						</div>
+						<div class="action-kiriman">
+							<!--komentar user-->
+							<% Komentar.all.where(idKiriman: p.id).each do |d| %>
+								<div class="komentar" style="background: white">
+									<p><b><%= User.find_by(id: d.idUser).nama %></b><!--namauser-->
+									<%= d.komentarUser %></p><!--isi komentar-->
+								</div>
+							<% end %>
+							<!--end komentar user-->
+
+							<!--form-komentar user-->
+							<%= form_for(@koment, url: {action: 'postKomentar'}, method: 'post') do |f| %>
+								<%= f.hidden_field :idUser, :value => user.id%>
+								<%= f.hidden_field :idKiriman, :value => p.id%>
+								<%= f.text_area :komentarUser, class:'text-komentar', placeholder: 'komentar...'%>
+								<%= f.submit 'Coment'%>
+							<% end %>
+							<!--end form-komentar user-->
+						</div>			
+						<div class="clear"></div>
+					</div>
+				<% end %>
+				<!--end kiriman user-->
+			</div>
+		</div>
+	</div>
+
+<% else %>
+	<h3>Opps!!</h3>
+<% end %>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sharing</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<% if user = current_user %>
+	  	<!--end header-->
+		<div class="header">
+			<div class="center">
+				<div class= "header brand">
+					<img class="header logo"<%= image_tag('logo.gif')%> 
+					
+					<div class="header brand line-left">
+						Sharing
+					</div>
+				</div>
+
+				<div class="header search">
+					<div class="header search line-left">
+						<%= form_tag do %>
+							<%= text_field_tag :search %>
+							<%= submit_tag "Cari" %>
+						<% end %>	
+					</div>
+
+					<div class="search line-right">
+  						<%= link_to 'Keluar', logout_path, method: :delete, class: 'link-white' %>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<!--end header-->
+
+		<!--sampul-->
+		<div class="sampul">
+			<div class="center">
+				<!--gambar foto sampul-->
+				<img class="sampul foto"<%= image_tag('banner.jpg')%> 
+				<img class="sampul foto-profil"<%= image_tag('profil.jpg')%>
+				<div class="samput text">
+					<h2><%= user.nama %></h2>
+					<p>Gelumbang, Sumatera Selatan</p>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<!--end sampul-->
+
+		<!--navbar-->
+		<div class="center">
+			<nav class="navbar">
+				<div class="center">
+					<ul>
+						<li><a href="profile"> Profile </a></li>
+						<li><a href="news"> News </a></li>
+						<li><a href=""> Message </a></li>
+						<li><a href=""> Group </a></li>
+					</ul>
+				</div>
+			</nav>
+			<div class="clear"></div>
+		</div>
+		<!--end sampul-->
+
+		<!--content-->
+		<div class="center" style="margin-top: 495px;">
+		    <%= yield %>
+		</div>
+		<!--end content-->
+  	
+	<% else %>
+		<h3>Opps!!</h3>
+  	<% end %>
+  </body>
+</html>

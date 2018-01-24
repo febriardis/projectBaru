@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sharing</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<!--end header-->
+	<div class="header">
+		<div class="center-home">
+			<div class= "header brand">
+				<img class="header logo"<%= image_tag('logo.gif')%> 
+				
+				<div class="header brand line-left">
+					Sharing
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<!--end header-->
+
+	<!--content-->
+	<div class="center-home">
+	    <%= yield %>
+		<div class="clear"></div>
+	</div>
+	<!--end content-->
+
+	<footer class="footer-home"></footer>
+
+  </body>
+</html>

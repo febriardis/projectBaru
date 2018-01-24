@@ -1,0 +1,45 @@
+<div class="form-login">
+	<h2>Login</h2>
+	<%= form_tag do %>
+		<div class="form-group">
+			<%= text_field_tag :username, nil, class: 'form-control', placeholder: 'Username', required: true  %>
+		</div>
+		<div class="form-group">
+			<%= password_field_tag :password, nil, class: 'form-control', placeholder: 'Password', required: true  %>
+		</div>
+		<div class="form-group">
+			<%= submit_tag :Masuk, class:'btn' %>
+		</div>
+	<% end %>
+	<div class="clear"></div>
+</div>
+
+
+<div class="form-daftar">
+	<% flash.each do |type, message| %>
+		<p><%=message%></p>
+	<%end%>
+	<h2>Sign up</h2>
+	<%= form_for(@user, url: {action: "daftar"}, method: "post") do |f| %>
+		<div class="form-group">
+			<%= f.label :Nama %>
+			<%= f.text_field :nama, class: 'form-control', required: true %>
+		</div>
+		<div class="form-group">
+			<%= f.label :Username %>
+			<%= f.text_field :username, class: 'form-control', required: true %>
+		</div>
+		<div class="form-group">
+			<%= f.label :Password %>
+			<%= f.password_field :password, class: 'form-control', required: true %>
+		</div>
+		<div class="form-group">
+			<%= f.label :Tanggal_Lahir %>
+			<%= f.date_field :tgl_lahir, class: 'form-control', required: true %>
+		</div>
+		<div class="form-group">
+			<%= f.submit :Daftar, class: 'btn' %>
+		</div>
+	<% end %>
+	<div class="clear"></div>
+</div>
