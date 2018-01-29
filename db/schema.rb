@@ -13,15 +13,15 @@
 ActiveRecord::Schema.define(version: 20180120060230) do
 
   create_table "komentars", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "idUser"
-    t.integer "idKiriman"
+    t.bigint "idUser"
+    t.bigint "idKiriman"
     t.string "komentarUser"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "news", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "idUser"
+    t.bigint "idUser"
     t.string "kirimanUser"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
