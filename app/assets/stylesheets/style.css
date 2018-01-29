@@ -22,7 +22,7 @@ body{
 
 /*--header style--*/
 .header {
-	background: #0ed9c4;
+	background: #51a8d0;
 	color: #ffffff;
 }
 
@@ -205,6 +205,27 @@ body{
 	font-family: 'arial'
 }
 
+.editsampul {
+	border-radius: 20px;
+	position: absolute;
+	color: #ffffff;
+	margin: 20px;
+	background: rgba(255,255,255,0.3);
+	cursor: pointer;
+}
+
+.editsampul:hover{
+	background: #f7f7f7;
+	color:#000000;
+}
+
+.icon-sampul{
+	width: 35px;
+	height: 30px;
+	padding-top: 1px;
+	padding-right: 1px;
+}
+
 @media only screen and (max-width: 780px) {
 	.sampul .foto{
 		position: absolute;
@@ -240,7 +261,7 @@ nav.navbar{
 	width: 85%;
 	height: 43px;
 	margin-top: 457px;
-	background-color: rgba(255,255,255,0.5);
+	background-color: rgba(255,255,255,0.4);
 	color: #000000;
 }
 
@@ -266,7 +287,32 @@ nav.navbar ul li a {
 }
 
 .content {
+	float: left;
+	width: 65%;
+	margin: 0 5%;
 	background: #ffffff;
+}
+
+.contact {
+	float: left;
+	width: 20%;
+	background: #ffffff;
+}
+
+.tbContact {
+	width: 100%; 
+}
+
+.tbContact th{
+	padding: 10px;
+}
+
+.tbContact th, td {
+	border-bottom: 1px solid #97c4b3;
+}
+
+.tbContact tr:hover {
+	background-color: #f8f8f8;
 }
 
 .kiriman {
@@ -286,6 +332,10 @@ nav.navbar ul li a {
 
 .form-submit-kiriman {
 	float: right;
+	background: #51a8d0;
+	color: #ffffff;
+	cursor: pointer;
+	border: none;
 	padding :5px 10px;
 	margin: 0px 0px 10px 0px;
 }

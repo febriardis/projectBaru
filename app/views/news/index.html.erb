@@ -1,15 +1,14 @@
 <% if user = current_user %>
 	<div class="backcontent">
-		<div class="center">
-			<div class="content"><hr>
+			<div class="content">
 				<div class="kiriman">
 					<!--form-kiriman user-->
 					<%= form_for(@kiriman, url: {action: 'postKiriman'}, method: 'post') do |f| %>
 						<%= f.hidden_field :idUser, :value => user.id%>
 						<div class="form-group">
-							<%= f.text_area :kirimanUser, class:'text-kiriman', placeholder: 'kirimkan sesuatu ....'%>
+							<%= f.text_area :kirimanUser, class:'text-kiriman', placeholder: 'kirimkan sesuatu ....', required: 'true'%>
 						</div>
-						<%= f.submit 'Post', class:'form-submit-kiriman' %>	
+						<%= f.submit 'Share', class:'form-submit-kiriman' %>	
 					<% end %>
 					<div class="clear"></div>
 					<!--end form-kiriman user-->
@@ -54,7 +53,7 @@
 									<%= f.hidden_field :idUser, :value => user.id%>
 									<%= f.hidden_field :idKiriman, :value => p.id%>
 									<div class="form-group">
-										<%= f.text_area :komentarUser, class:'text-komentar', placeholder: 'komentar...'%>
+										<%= f.text_area :komentarUser, class:'text-komentar', placeholder: 'komentar...', required: 'true'%>
 									</div>
 									<%= f.submit 'Coment'%>
 								<% end %>
@@ -64,9 +63,28 @@
 						<div class="clear"></div>
 					</div>
 				<% end %>
+				<div class="clear"></div>
 				<!--end kiriman user-->
 			</div>
-		</div>
+
+			<div class="contact">
+				<table class="tbContact">
+					<thead>
+						<tr>
+							<th>Contact</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% User.all.each do |f| %>
+							<tr>
+								<td><%= f.nama %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+	
+		<div class="clear"></div>
 	</div>
 <% else %>
 	<h3>Opps!!</h3>
