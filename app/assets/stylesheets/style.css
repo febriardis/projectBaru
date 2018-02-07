@@ -313,6 +313,7 @@ nav.navbar ul li a {
 
 .tbContact tr:hover {
 	background-color: #f8f8f8;
+	cursor: pointer;
 }
 
 .kiriman {
@@ -323,11 +324,24 @@ nav.navbar ul li a {
 	padding-right: 12px;
 }
 
+.center-kiriman{
+
+}
+
 .text-kiriman {
 	width: 100%;
 	height: 80px;
 	margin: 8px 8px 0px 8px;
 	resize: none;
+}
+
+.form-gambar {
+	width: 98.3%; 
+	height: 100%;
+	text-align: center;
+	cursor: pointer;
+	margin: 0px 8px 8px 8px; 
+	border: 0.8px solid #97c4b3;
 }
 
 .form-submit-kiriman {

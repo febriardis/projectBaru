@@ -2,16 +2,21 @@
 	<div class="backcontent">
 			<div class="content">
 				<div class="kiriman">
+					<div class="center-kiriman">
 					<!--form-kiriman user-->
 					<%= form_for(@kiriman, url: {action: 'postKiriman'}, method: 'post') do |f| %>
 						<%= f.hidden_field :idUser, :value => user.id%>
 						<div class="form-group">
 							<%= f.text_area :kirimanUser, class:'text-kiriman', placeholder: 'kirimkan sesuatu ....', required: 'true'%>
 						</div>
+						<div class="form-gambar">
+							+ foto
+						</div>
 						<%= f.submit 'Share', class:'form-submit-kiriman' %>	
 					<% end %>
 					<div class="clear"></div>
 					<!--end form-kiriman user-->
+					</div>
 				</div>
 				<hr>
 
@@ -25,7 +30,7 @@
 							
 							<div class="header-kiriman action">
 								<% x = p.id %>
-								<%= link_to "v", hapusKirimanNews_path(x), method: :delete, class:'link' %>
+								<%= link_to "---", hapusKirimanNews_path(x), method: :delete, class:'link', data: {confirm: 'Anda yakin akan menghapus kiriman?'} %>
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -35,7 +40,7 @@
 							<p><%= p.kirimanUser %></p>
 						</div>
 						<!--end Isi Kiriman-->
-						
+						<hr>
 						<!--action kiriman-->
 						<div class="action-kiriman">
 							<!--komentar user-->
