@@ -1,63 +1,123 @@
 <% if user = current_user %>
 	<div class="backcontent">
-		<div class="center">
-			<div class="content"><hr>
+			<div class="content">
+				<div class="profiles">
+					<div class="text-profiles">
+						<p>Gelumbang, Sumatera Selatan</p>
+						<p>MA Raudhatul Ulum</p>
+						<p>UIN Sunan Gunung Djati Bandung</p>
+					</div>
+
+					<div class="action-profiles">
+						<img <%= image_tag("set.png") %>
+					</div>
+
+					<div class="clear"></div>
+					
+					<fieldset>
+						<legend>Galeri</legend>
+						<div class="galeri">
+							<img <%= image_tag("gambar.PNG")%>
+							<img <%= image_tag("gambar.PNG")%>
+							<img <%= image_tag("gambar.PNG")%>
+							<img <%= image_tag("gambar.PNG")%>
+							<img <%= image_tag("gambar.PNG")%>
+						</div>
+						<%= link_to "Lainnya", profile_path, class:'galeri-lain' %>
+					</fieldset>
+				</div>
+
+				<hr>
 				<div class="kiriman">
+					<div class="center-kiriman">
 					<!--form-kiriman user-->
 					<%= form_for(@kiriman, url: {action: 'postKiriman'}, method: 'post') do |f| %>
 						<%= f.hidden_field :idUser, :value => user.id%>
-						<%= f.text_area :kirimanUser, class:'form-kiriman', placeholder: 'kirimkan sesuatu ....'%>
-						<%= f.submit 'Post', class:'form-submit-kiriman' %>
+						<div class="form-group">
+							<%= f.text_area :kirimanUser, class:'text-kiriman', placeholder: 'kirimkan sesuatu ....', required: 'true'%>
+						</div>
+						<div class="form-gambar">
+							+ foto
+						</div>
+						<%= f.submit 'Share', class:'form-submit-kiriman' %>	
 					<% end %>
 					<div class="clear"></div>
 					<!--end form-kiriman user-->
+					</div>
 				</div>
 				<hr>
 
 				<!--kiriman user-->
-				<% News.all.where(idUser: user.id).each do |p| %>
-					<div class="news">
+				<% @news.where(idUser: user.id).each do |p| %>
+					<div class="bg-kiriman">
 						<div class="header-kiriman">
-							<div style="color:#fff; float: left;">
+							<div class="header-kiriman nama" style="background: #ffffff">
 								<%= User.find_by(id: p.idUser).nama %> <!--Nama Pengirim-->
 							</div>
 							
-							<div class="kir">
+							<div class="header-kiriman action">
 								<% x = p.id %>
-								<%= link_to "x", hapusKiriman_path(x), method: :delete, class:'link' %>
+								<%= link_to "---", hapusKirimanNews_path(x), method: :delete, class:'link', data: {confirm: 'Anda yakin akan menghapus kiriman?'} %>
 							</div>
+							<div class="clear"></div>
 						</div>
 
-						<div class="news-kiriman"  style="background: white">
+						<!--Isi Kiriman-->
+						<div class="isi-kiriman">
 							<p><%= p.kirimanUser %></p>
 						</div>
+						<!--end Isi Kiriman-->
+						
+						<!--action kiriman-->
 						<div class="action-kiriman">
 							<!--komentar user-->
 							<% Komentar.all.where(idKiriman: p.id).each do |d| %>
-								<div class="komentar" style="background: white">
+								<div class="isi-komentar">
 									<p><b><%= User.find_by(id: d.idUser).nama %></b><!--namauser-->
-									<%= d.komentarUser %></p><!--isi komentar-->
+										<%= d.komentarUser %><!--isi komentar-->
+									</p>
 								</div>
 							<% end %>
 							<!--end komentar user-->
 
 							<!--form-komentar user-->
-							<%= form_for(@koment, url: {action: 'postKomentar'}, method: 'post') do |f| %>
-								<%= f.hidden_field :idUser, :value => user.id%>
-								<%= f.hidden_field :idKiriman, :value => p.id%>
-								<%= f.text_area :komentarUser, class:'text-komentar', placeholder: 'komentar...'%>
-								<%= f.submit 'Coment'%>
-							<% end %>
+								<%= form_for(@koment, url: {action: 'postKomentar'}, method: 'post') do |f| %>
+									<%= f.hidden_field :idUser, :value => user.id%>
+									<%= f.hidden_field :idKiriman, :value => p.id%>
+									<div class="form-group">
+										<%= f.text_area :komentarUser, class:'text-komentar', placeholder: 'komentar...', required: 'true'%>
+									</div>
+									<%= f.submit 'Coment'%>
+								<% end %>
 							<!--end form-komentar user-->
-						</div>			
+						</div>
+						<!--end action kiriman-->			
 						<div class="clear"></div>
 					</div>
 				<% end %>
+				<div class="clear"></div>
 				<!--end kiriman user-->
 			</div>
-		</div>
-	</div>
+			<hr>
+			<div class="contact">
+				<table class="tbContact">
+					<thead>
+						<tr>
+							<th>Contact</th>
+						</tr>
+					</thead>
+					<tbody class="c-tbody">
+						<% User.all.each do |f| %>
+							<tr>
+								<td><%= f.nama %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
 
+		<div class="clear"></div>
+	</div>
 <% else %>
 	<h3>Opps!!</h3>
 <% end %>

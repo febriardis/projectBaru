@@ -40,7 +40,7 @@
 							<p><%= p.kirimanUser %></p>
 						</div>
 						<!--end Isi Kiriman-->
-						<hr>
+						
 						<!--action kiriman-->
 						<div class="action-kiriman">
 							<!--komentar user-->
@@ -71,7 +71,7 @@
 				<div class="clear"></div>
 				<!--end kiriman user-->
 			</div>
-
+			<hr>
 			<div class="contact">
 				<table class="tbContact">
 					<thead>
@@ -79,7 +79,7 @@
 							<th>Contact</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody class="c-tbody">
 						<% User.all.each do |f| %>
 							<tr>
 								<td><%= f.nama %></td>

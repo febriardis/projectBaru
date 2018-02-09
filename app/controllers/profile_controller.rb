@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
 
-    def profile
+    def index
   		@kiriman = News.new
   		@koment = Komentar.new
   		@news = News.all
@@ -9,7 +9,7 @@ class ProfileController < ApplicationController
   	def postKiriman
   		@kiriman = News.new(params_kiriman)
   		if @kiriman.save
-  			redirect_to news_path
+  			redirect_to profile_path
   		else
   			render plain: 'gagal'
   		end
@@ -18,7 +18,7 @@ class ProfileController < ApplicationController
     def hapusKiriman
       @kiriman = News.find(params[:id])
       if @kiriman.delete
-        redirect_to news_path
+        redirect_to profile_path
       else
         render plain: 'gagal'
       end
@@ -27,7 +27,7 @@ class ProfileController < ApplicationController
   	def postKomentar
   		@koment = Komentar.new(params_koment)
   		if @koment.save
-  			redirect_to news_path
+  			redirect_to profile_path
   		else
   			render plain: 'gagal'
   		end

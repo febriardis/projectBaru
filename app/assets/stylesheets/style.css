@@ -2,7 +2,9 @@ body{
 	margin: 0px;
 	font-family: 'arial'
 }
-
+hr{
+	border: 2px solid #ececec;
+}
 .center{
 	margin : 0px auto;
 	width : 85%;
@@ -21,7 +23,11 @@ body{
 /*---------------------------------------- Layout -> Application Index Style--------------------------------------------------- */
 
 /*--header style--*/
+
 .header {
+ 	position: -webkit-sticky;
+ 	position: sticky;
+ 	top: 0;
 	background: #51a8d0;
 	color: #ffffff;
 }
@@ -280,8 +286,37 @@ nav.navbar ul li a {
 
 /*--end navbar style--*/
 
+.profiles{
+	 width: 80%; 
+	 margin: 0px auto;
+}
+.text-profiles{
+	float: left;
+	font-size: 14px;
+}
 
-/*--end content style--*/
+.action-profiles img{
+	float: right;
+	margin-top: 10px;
+	width: 33px;
+	height: 25px;
+	cursor: pointer;
+}
+
+.galeri img {
+	width: 19.3%;
+	height: 19.3%;
+}
+
+.galeri-lain {
+	color: #000000;
+}
+
+.galeri-lain:hover {
+	color: #93a9c7;
+}
+
+/*--content style--*/
 .backcontent {
 	background: #ececec;
 }
@@ -294,8 +329,12 @@ nav.navbar ul li a {
 }
 
 .contact {
-	float: left;
-	width: 20%;
+  	position: -webkit-sticky;
+  	position: sticky;
+  	float: left;
+  	font-size: 14px;
+  	width: 20%;
+	top: 40px;
 	background: #ffffff;
 }
 
@@ -308,10 +347,10 @@ nav.navbar ul li a {
 }
 
 .tbContact th, td {
-	border-bottom: 1px solid #97c4b3;
+	border-bottom: 0.5px solid #97c4b3;
 }
 
-.tbContact tr:hover {
+.tbContact .c-tbody tr:hover {
 	background-color: #f8f8f8;
 	cursor: pointer;
 }
@@ -363,6 +402,7 @@ nav.navbar ul li a {
 
 .bg-kiriman {
 	width: 70%;
+	font-size: 15px;
 	border-radius: 5px;
 	background: #ececec;
 	margin: 20px auto;
@@ -405,3 +445,37 @@ nav.navbar ul li a {
 }
 
 /*--end content style--*/
+
+/*--obrolan style--*/
+.t-obrolan {
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    width: 250px;
+    height: 280px;
+	background-color: rgba(255,255,255,0.4);
+    border: 2px solid #51a8d0;
+}
+
+.head {
+	background: #51a8d0;
+	height: 20px;
+	padding: 0px 10px;
+	color: #ffffff;
+}
+
+/*--<div class="t-obrolan">
+	<div class="head">
+		<div class="nm-penerima" style="float: left;">
+			jhon
+		</div>
+		<div class="ob-action" style="float: right;">
+			x
+		</div>
+	</div>
+	<div class="isi">
+		isi
+	</div>
+</div>--*/
+
+/*--end obrolan style--*/
